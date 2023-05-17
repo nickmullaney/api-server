@@ -3,6 +3,8 @@
 const express = require('express');
 const cors = require('cors');
 const recipeRouter = require('./routes/recipe');
+const logger = require('./middleware/logger');
+const validator = require('./middleware/validator')
 
 const app = express();
 app.use(cors());

@@ -10,7 +10,7 @@ module.exports = (SequelizeDatabase, DataTypes) => {
     },
     ingredients: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false
     },
     vegetarian: {
       type: DataTypes.BOOL,
