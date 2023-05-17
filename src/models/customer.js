@@ -1,5 +1,3 @@
-const { Sequelize, DataTypes, DATEONLY, ENUM } = require("sequelize");
-
 `use strict`;
 
 module.exports = (SequelizeDatabase, DataTypes) => {
