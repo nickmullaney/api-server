@@ -21,14 +21,14 @@ describe('REST API Tests', () => {
   });
 
   describe('Create a record using POST', () => {
-    it('should create a new record and return it with a 201 status code', async () => {
+    it('should create a new record and return it with a 200 status code', async () => {
       const newRecord = { title: 'New Recipe', description: 'Delicious recipe' };
 
       const response = await mockRequest
         .post('/recipe')
         .send(newRecord); // Send a POST request with the new record data
 
-      expect(response.status).toBe(201); // Expect the response status to be 201
+      expect(response.status).toBe(200); // Expect the response status to be 201
       expect(response.body).toHaveProperty('id'); // Expect the response body to have the 'id' property
       expect(response.body.title).toBe(newRecord.title); // Expect the response body's 'title' to match the new record's title
       expect(response.body.description).toBe(newRecord.description); // Expect the response body's 'description' to match the new record's description

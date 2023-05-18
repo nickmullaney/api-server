@@ -49,7 +49,9 @@ router.post('/recipe', async (req, res, next) => {
 router.delete('/recipe/:id', async (req, res, next) => {
   try {
     // Delete a recipe with the given ID from the database
-    let deleteRecipe = await recipeModel.destroy({ where: { id: req.params.id } });
+    let deleteRecipe = await recipeModel.findAll({ where: { id: req.params.id } });
+
+    await recipeModel.destroy({where: {id: req.params.id}});
     // Send the number of deleted recipes as the response
     res.status(200).json(deleteRecipe);
   }
@@ -62,10 +64,12 @@ router.delete('/recipe/:id', async (req, res, next) => {
 // Route to update a recipe by ID
 router.put('/recipe/:id', async (req, res, next) => {
   try {
+    await recipeModel.update(req.body, { where: { id: req.params.id }});
     // Update a recipe with the given ID in the database using the request body data
     let updatedRecipe = await recipeModel.update(req.body, { where: { id: req.params.id } });
     // Send the updated recipe as the response
     res.status(200).send(updatedRecipe);
+
   } catch (e) {
     // Pass any errors to the error handling middleware
     next(e);
