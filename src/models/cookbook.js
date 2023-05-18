@@ -3,26 +3,23 @@
 module.exports = (SequelizeDatabase, DataTypes) => {
   //Note that recipes WILL BE the name of the table created, pluralized
   // Each property: food, ingredient, vegetarian corresponds to a column in the database
-  return SequelizeDatabase.define('recipes', {
+  return SequelizeDatabase.define('cookbooks', {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    ingredients: {
+    cuisine: {
       type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false
     },
-    flavors: {
-      type: DataTypes.BOOLEAN,
+    category: {
+      type: DataTypes.ENUM,
+      values: ["entree", "appetizer", "soup", "dessert", "breakfast", "lunch", "dinner", "salad", "bread"],
       allowNull: false
     },
-    rating: {
-      type: DataTypes.INTEGER,
-      allowNull: true
-    },
-    cookbookId: {
+    quantity: {
       type: DataTypes.INTEGER,
       allowNull: false
     }
-  })
+  });
 };
