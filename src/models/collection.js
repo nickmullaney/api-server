@@ -7,7 +7,6 @@ class Collection {
 
   // This sequelize functionality lives here
   // can make a route model that abstracts all of this too
-
   async create(data) {
     try {
       const newRecord = await this.model.create(data);
@@ -36,8 +35,7 @@ class Collection {
     };
   };
 
-
-  async delete(id = null) {
+  async delete(id) {
     try {
       const deleteRecord = await this.model.findByPk(id);
       await deleteRecord.destroy(id);
@@ -56,7 +54,6 @@ class Collection {
       return e;
     }
   };
-
 
 };
 

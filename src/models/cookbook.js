@@ -17,7 +17,7 @@ module.exports = (SequelizeDatabase, DataTypes) => {
       values: ["entree", "appetizer", "soup", "dessert", "breakfast", "lunch", "dinner", "salad", "bread"],
       allowNull: false
     },
-    quantity: {
+    recipeQuantity: {
       type: DataTypes.INTEGER,
       allowNull: false
     }

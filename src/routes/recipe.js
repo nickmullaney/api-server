@@ -10,7 +10,7 @@ const validator = require('../middleware/validator');
 router.get('/recipe', async (req, res, next) => {
   try {
     // Retrieve all recipes from the database
-    let recipes = await recipe.findAll();
+    let recipes = await recipe.read();
     // Send the retrieved recipes as the response
     res.status(200).send(recipes);
   }
@@ -27,7 +27,7 @@ router.get('/recipe/:id', async (req, res, next) => {
   try {
     console.log('heres my id ', id);
     // Find a single recipe with the given ID in the database
-    let singleRecipe = await recipe.findAll({ where: { id } });
+    let singleRecipe = await recipe.get({ where: { id } });
     // Send the retrieved recipe as the response
     res.status(200).send(singleRecipe);
   }
@@ -49,9 +49,9 @@ router.post('/recipe', async (req, res, next) => {
 router.delete('/recipe/:id', async (req, res, next) => {
   try {
     // Delete a recipe with the given ID from the database
-    let deleteRecipe = await recipe.findAll({ where: { id: req.params.id } });
+    let deleteRecipe = await recipe.read({ where: { id: req.params.id } });
 
-    await recipe.destroy({where: {id: req.params.id}});
+    await recipe.delete({where: {id: req.params.id}});
     // Send the number of deleted recipes as the response
     res.status(200).json(deleteRecipe);
   }

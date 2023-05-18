@@ -10,7 +10,7 @@ const validator = require('../middleware/validator');
 router.get('/cookbook', async (req, res, next) => {
   try {
     // Retrieve all recipes from the database
-    let cookbooks = await cookbook.findAll();
+    let cookbooks = await cookbook.read();
     // Send the retrieved recipes as the response
     res.status(200).send(cookbooks);
   }
