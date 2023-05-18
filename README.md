@@ -10,9 +10,9 @@ Build a REST API using Express, by creating a proper series of endpoints that pe
 
 ### Links and Resources
 
-- [GitHub Actions ci/cd(TBD)](https://github.com/nickmullaney/basic-express-server/actions) 
-- [back-end dev server url(TBD)](https://basic-express-server-dev-s3kt.onrender.com)
-- [back-end prod server url(TBD)](https://basic-express-server-prod-kctt.onrender.com) 
+- [GitHub Actions ci/cd(TBD)](https://github.com/nickmullaney/api-server/actions) 
+- [back-end dev server url](https://api-server-dev-7der.onrender.com)
+- [back-end prod server url](https://api-server-prod-xzvm.onrender.com) 
 
 ### Collaborators
 
