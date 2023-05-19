@@ -7,7 +7,7 @@ const Collection = require('./collection');
 
 // will make dynamic for testing environment.
 //  known bug(double colons might not work for everyone, use single colon if thats the case, sqlite:memory, if that is the case)
-const DATABASE_URL = process.env.DATABASE_URL === 'test' ? 'sqlite:memory' : process.env.DATABASE_URL;
+const DATABASE_URL = process.env.DATABASE_URL === 'test' ? 'sqlite::memory' : process.env.DATABASE_URL;
 
 //database singleton
 const SequelizeDatabase = new Sequelize(DATABASE_URL, {});
@@ -24,5 +24,5 @@ recipeModel.belongsTo(cookbookModel);
 module.exports = {
   SequelizeDatabase,
   recipe: new Collection(recipeModel),
-  cookbook: new Collection(cookbookModel)
+  cookbook: new Collection(cookbookModel),
 };

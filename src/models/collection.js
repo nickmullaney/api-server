@@ -23,14 +23,21 @@ class Collection {
   async read(id = null) {
     try {
       if (id) {
-        const singleRecord = await this.model.findByPk(id);
+        console.log("Am I the problem ID?", id);
+        let singleRecord = await this.model.findByPk(id);
         return singleRecord;
-      } else {
-        const allRecords = await this.model.findAll();
+      }
+      // else if({include: {recipe}}) {
+      //   let recipeRecords = await this.model.findAll({include: {recipe}});
+      //   console.log("Am I the problem recipeObject?");
+      //   return recipeRecords;
+      // } 
+      else  {
+        let allRecords = await this.model.findAll();
         return allRecords;
       }
     } catch (e) {
-      console.error('We have a ModelInterface create error', e);
+      console.error('We have a ModelInterface read error', e);
       return e;
     };
   };
@@ -41,7 +48,7 @@ class Collection {
       console.log("here is the ID", id);
       return deleteRecord.destroy(id);
     } catch (e) {
-      console.error('We have a ModelInterface create error', e);
+      console.error('We have a ModelInterface delete error', e);
       return e;
     }
   };
@@ -51,13 +58,11 @@ class Collection {
       const updatedRecord = await this.model.update(data, id);
       return updatedRecord;
     } catch (e) {
-      console.error('We have a ModelInterface create error', e);
+      console.error('We have a ModelInterface update error', e);
       return e;
     }
   };
 
 };
-
-
 
 module.exports = Collection;
