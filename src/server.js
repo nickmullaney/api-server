@@ -4,6 +4,7 @@
 const express = require('express');
 const cors = require('cors');
 const recipeRouter = require('./routes/recipe');
+const cookbookRouter = require('./routes/cookbook');
 const logger = require('./middleware/logger');
 
 // Create an instance of Express
@@ -17,6 +18,9 @@ app.use(express.json());
 
 // Register the recipe router middleware
 app.use(recipeRouter);
+
+// Register the cookbook router middleware
+app.use(cookbookRouter);
 
 // Register the logger middleware
 app.use(logger);

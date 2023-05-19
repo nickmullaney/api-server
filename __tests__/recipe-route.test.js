@@ -14,9 +14,9 @@ afterAll(async () =>{
   await SequelizeDatabase.drop();
 });
 
-describe('order router', ()=>{
+describe('recipe router', ()=>{
   test('handles create route', async() =>{
-    const response = await request.post('/recipe').send({name: 'test', ingredients: 'tomato'});
+    const response = await request.post('/recipe').send({name: 'test', ingredients: 'tomato', flacors: 'savory', rating: 3});
 
     expect(response.status).toEqual(200);
     expect(response.body).toEqual('test');

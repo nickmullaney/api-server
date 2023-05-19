@@ -18,7 +18,7 @@ describe('Validator middleware', () => {
     req = {query: {food: ''} }
     validator(req, res, next);
 
-    expect(next).toBeCalledWith('Food parameter is missing');
+    expect(next).toBeCalledWith('Recipe is missing');
   });
 
   test('runs successfully as expected', () => {

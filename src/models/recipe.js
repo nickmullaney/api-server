@@ -13,7 +13,7 @@ module.exports = (SequelizeDatabase, DataTypes) => {
       allowNull: false
     },
     flavors: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
       allowNull: false
     },
     rating: {
@@ -22,7 +22,7 @@ module.exports = (SequelizeDatabase, DataTypes) => {
     },
     cookbookId: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     }
   })
 };
