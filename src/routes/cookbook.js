@@ -40,17 +40,17 @@ router.get('/cookbook/:id', async (req, res, next) => {
 // This is broken
 router.get('/cookbookWithRecipe', async (req, res, next) => {
   try {
-    let cookbooks = await cookbook.read({recipe});
+    let cookbooks = await cookbook.read(null, {include: {model: recipe.model}} );
     res.status(200).send(cookbooks);
   } catch (e) {
     next(e);
   }
 });
 
-router.get('/cookbookWithSingleRecipe', async (req, res, next) =>{
+router.get('/cookbookWithSingleRecipe/:id', async (req, res, next) =>{
   let id = parseInt(req.params.id);
-  let cookbooks = await cookbook.read({
-    include: { recipe},
+  let cookbooks = await cookbook.read(null, {
+    include: { model: recipe.model},
     where: {id}
   });
   res.status(200).send(cookbooks);

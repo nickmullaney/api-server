@@ -20,18 +20,19 @@ class Collection {
 
   // creates a default of null if I don't enter in an ID
   // This finds 1 or finds all based on if else
-  async read(id = null) {
+  async read(id = null, options=null) {
+    // build else if with options equal number then do this
     try {
       if (id) {
         console.log("Am I the problem ID?", id);
         let singleRecord = await this.model.findByPk(id);
         return singleRecord;
       }
-      // else if({include: {recipe}}) {
-      //   let recipeRecords = await this.model.findAll({include: {recipe}});
-      //   console.log("Am I the problem recipeObject?");
-      //   return recipeRecords;
-      // } 
+      else if(options) {
+        let recipeRecords = await this.model.findAll(options);
+        console.log("Am I the problem recipeObject?");
+        return recipeRecords;
+      } 
       else  {
         let allRecords = await this.model.findAll();
         return allRecords;
