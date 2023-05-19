@@ -16,8 +16,21 @@ Build a REST API using Express, by creating a proper series of endpoints that pe
 
 ### Collaborators
 
-Thanks to Roger Gallaway for the demo code, permission granted to use, Thanks to OpenAi for the assist on sections, Thanks to Ryan Eastman for going over lab 3 with feedback, and Reece Renninger for coworking together 
-### Setup
+Thanks to Roger Gallaway for the demo code, permission granted to use
+
+Thanks to OpenAi for the assist on sections
+
+Thanks to Ryan Eastman for going over lab 3 with feedback
+
+Thanks to Reece Renninger for coworking together 
+### Code Review Process
+
+-Ryan is a great partner, he's got a very unique perspective and often times sees the small things that can be overlooked. He was able to point out some key mistakes in my code with my routes and ensuring that all the t's were crossed and the i's dotted. I was able to assist him in some error handling and cleaning up names and adding some useful comments. This was overall a great experience but we just chatted instead of doing the PR's
+
+-Key Takeaways:
+- I need to work on componetizing
+- double checking routes
+- missing small things like `:` or `/`'s in places.
 
 #### `.env` requirements (where applicable)
 
