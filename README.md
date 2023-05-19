@@ -16,7 +16,7 @@ Build a REST API using Express, by creating a proper series of endpoints that pe
 
 ### Collaborators
 
-Thanks to Roger Gallaway for the demo code, permission granted to use, Thanks to OpenAi for the assist on sections 
+Thanks to Roger Gallaway for the demo code, permission granted to use, Thanks to OpenAi for the assist on sections, Thanks to Ryan Eastman for going over lab 3 with feedback, and Reece Renninger for coworking together 
 ### Setup
 
 #### `.env` requirements (where applicable)
