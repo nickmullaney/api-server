@@ -37,15 +37,16 @@ class Collection {
 
   async delete(id) {
     try {
-      const deleteRecord = await this.model.findByPk(id);
-      await deleteRecord.destroy(id);
+      const deleteRecord = await this.model.findOne(id);
+      console.log("here is the ID", id);
+      return deleteRecord.destroy(id);
     } catch (e) {
       console.error('We have a ModelInterface create error', e);
       return e;
     }
   };
 
-  async update(id, data) {
+  async update(data, id) {
     try {
       const updatedRecord = await this.model.update(data, id);
       return updatedRecord;

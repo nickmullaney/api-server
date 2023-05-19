@@ -4,7 +4,7 @@
 const express = require('express');
 const router = express.Router();
 const { recipe } = require('../models');
-const validator = require('../middleware/validator');
+// const validator = require('../middleware/validator');
 
 // Route to get all recipes
 router.get('/recipe', async (req, res, next) => {
@@ -47,11 +47,12 @@ router.post('/recipe', async (req, res, next) => {
 
 // Route to delete a recipe by ID
 router.delete('/recipe/:id', async (req, res, next) => {
+  let id = parseInt(req.params.id);
   try {
     // Delete a recipe with the given ID from the database
-    let deleteRecipe = await recipe.read({ where: { id: req.params.id } });
+    let deleteRecipe = await recipe.read({ where: { id } });
 
-    await recipe.delete({where: {id: req.params.id}});
+    await recipe.delete({where: { id } });
     // Send the number of deleted recipes as the response
     res.status(200).json(deleteRecipe);
   }

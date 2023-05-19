@@ -7,7 +7,7 @@ require('dotenv').config();
 const PORT = process.env.PORT || 3002;
 
 // Import the SequelizeDatabase and start functions from their respective modules
-const { SequelizeDatabase } = require('./src/models');
+const { SequelizeDatabase } = require('./src/models/index');
 const { start } = require('./src/server');
 
 // Sync the Sequelize models with the database

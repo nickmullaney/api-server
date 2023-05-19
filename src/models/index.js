@@ -10,7 +10,7 @@ const Collection = require('./collection');
 const DATABASE_URL = process.env.DATABASE_URL === 'test' ? 'sqlite:memory' : process.env.DATABASE_URL;
 
 //database singleton
-const SequelizeDatabase = new Sequelize(DATABASE_URL);
+const SequelizeDatabase = new Sequelize(DATABASE_URL, {});
 
 //create our working aod connected customer database model
 const recipeModel = recipe(SequelizeDatabase, DataTypes);
