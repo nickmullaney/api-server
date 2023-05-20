@@ -27,7 +27,7 @@ router.get('/recipe/:id', async (req, res, next) => {
   try {
     console.log('heres my id ', id);
     // Find a single recipe with the given ID in the database
-    let singleRecipe = await recipe.get({ where: { id } });
+    let singleRecipe = await recipe.read(id);
     // Send the retrieved recipe as the response
     res.status(200).send(singleRecipe);
   }

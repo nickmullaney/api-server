@@ -24,5 +24,5 @@ recipeModel.belongsTo(cookbookModel);
 module.exports = {
   SequelizeDatabase,
   recipe: new Collection(recipeModel),
-  cookbook: new Collection(cookbookModel)
+  cookbook: new Collection(cookbookModel),
 };

@@ -1,7 +1,16 @@
 const supertest = require('supertest');
 const { app } = require('../src/server');
-
+const { sequelizeDatabase } = require('../src/models');
+require('dotenv').config(); 
 const mockRequest = supertest(app);
+
+beforeAll(async () => {
+  await sequelizeDatabase.sync();
+});
+
+afterAll(async () => {
+  await sequelizeDatabase.drop();
+});
 
 describe('REST API Tests', () => {
   let createdRecordId; // Store the ID of the created record for later use in other tests

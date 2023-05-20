@@ -27,7 +27,7 @@ router.get('/cookbook/:id', async (req, res, next) => {
   try {
     console.log('heres my id ', id);
     // Find a single cookbook with the given ID in the database
-    let singleCookbook = await cookbook.findAll({ where: { id } });
+    let singleCookbook = await cookbook.read(id);
     // Send the retrieved cookbook as the response
     res.status(200).send(singleCookbook);
   }
@@ -37,15 +37,21 @@ router.get('/cookbook/:id', async (req, res, next) => {
   }
 });
 
-router.get('/cookbookWithRecipe', async (req, res, next) =>{
-  let cookbooks = await cookbook.findAll({include: {model: recipe}});
-  res.status(200).send(cookbooks);
+// This is broken
+router.get('/cookbookWithRecipe', async (req, res, next) => {
+  try {
+    let cookbooks = await cookbook.read(null, {include: {model: recipe.model}} );
+    res.status(200).send(cookbooks);
+  } catch (e) {
+    next(e);
+  }
 });
 
-router.get('/cookbookWithSingleRecipe', async (req, res, next) =>{
-  let cookbooks = await cookbook.findAll({
-    include: {model: recipe},
-    where: {id: req.params.id},
+router.get('/cookbookWithSingleRecipe/:id', async (req, res, next) =>{
+  let id = parseInt(req.params.id);
+  let cookbooks = await cookbook.read(null, {
+    include: { model: recipe.model},
+    where: {id}
   });
   res.status(200).send(cookbooks);
 });

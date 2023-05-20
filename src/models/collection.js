@@ -20,17 +20,25 @@ class Collection {
 
   // creates a default of null if I don't enter in an ID
   // This finds 1 or finds all based on if else
-  async read(id = null) {
+  async read(id = null, options=null) {
+    // build else if with options equal number then do this
     try {
       if (id) {
-        const singleRecord = await this.model.findByPk(id);
+        console.log("Am I the problem ID?", id);
+        let singleRecord = await this.model.findByPk(id);
         return singleRecord;
-      } else {
-        const allRecords = await this.model.findAll();
+      }
+      else if(options) {
+        let recipeRecords = await this.model.findAll(options);
+        console.log("Am I the problem recipeObject?");
+        return recipeRecords;
+      } 
+      else  {
+        let allRecords = await this.model.findAll();
         return allRecords;
       }
     } catch (e) {
-      console.error('We have a ModelInterface create error', e);
+      console.error('We have a ModelInterface read error', e);
       return e;
     };
   };
@@ -41,7 +49,7 @@ class Collection {
       console.log("here is the ID", id);
       return deleteRecord.destroy(id);
     } catch (e) {
-      console.error('We have a ModelInterface create error', e);
+      console.error('We have a ModelInterface delete error', e);
       return e;
     }
   };
@@ -51,13 +59,11 @@ class Collection {
       const updatedRecord = await this.model.update(data, id);
       return updatedRecord;
     } catch (e) {
-      console.error('We have a ModelInterface create error', e);
+      console.error('We have a ModelInterface update error', e);
       return e;
     }
   };
 
 };
-
-
 
 module.exports = Collection;
